@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "php-transpiler": "github:Theme-Fusion/php-transpiler"
   },
   "devDependencies": {
     "got": "^11.3.0",
