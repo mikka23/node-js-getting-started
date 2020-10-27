@@ -13,8 +13,35 @@
           <input type="submit" id="extract" class="btn btn-primary btn-lg btn-block" value="Transpile" />
         </form>
         <hr>
-        <pre class="border rounded bg-light  p-4" id="output"><%= jsCode %></pre>
+        <div class="relative-position">
+         <button id="copy" class="btn btn-primary btn-lg">Copy JS</button>
+        <textarea class="border form-control mb-4 rounded bg-dark  p-4" rows="10" id="output"><%= jsCode %></textarea>
+      </div>
       </div>
   </div>
+  <script>
+    jQuery( document ).ready( function() {
+      jQuery( '#copy' ).on( 'click', function( event ) {
+        if ( event ) {
+          event.preventDefault();
+        }
+
+        var $copyTextarea = jQuery( '#output' );
+        $copyTextarea[0].focus();
+        $copyTextarea[0].select();
+
+        try {
+          var successful = document.execCommand( 'copy' );
+          if ( successful ) {
+             alert( 'JS Copied' );
+          } else {
+             alert('Something Went Wrong' );
+          }
+        } catch (err) {
+          alert('Oops, unable to copy');
+        }
+      } );
+    } );
+  </script>
 </body>
 </html>
