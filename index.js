@@ -6,7 +6,8 @@ const bodyParser = require( 'body-parser' );
 const app        = express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(bodyParser.urlencoded({
-	   extended: false
+	   extended: true,
+	   limit: '50mb'
 	}))
   .use( bodyParser.json() )
   .set('views', path.join(__dirname, 'views'))
@@ -28,13 +29,3 @@ const app        = express()
 	  res.render('pages/index', { phpCode: phpCode, jsCode: jsCode })
 	})
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-/*
- var translator = new transpiler( {
-  browser: true,
-} );
-
-var newValue =  translator.read( $in.val() );
-
-$out.text( newValue );
-*/
